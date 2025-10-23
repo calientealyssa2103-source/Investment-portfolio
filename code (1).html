@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa Caliente's Investment Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.9);
+            color: #ffffff;
+            padding: 1rem;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+        header nav a {
+            color: #ffffff;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+        header nav a:hover {
+            color: #ff0000;
+            transform: scale(1.1);
+        }
+        section {
+            min-height: 100vh;
+            padding: 5rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            position: relative;
+        }
+        .red-accent { color: #ff0000; font-weight: bold; }
+        .icon { font-size: 2rem; margin: 0.5rem; color: #ff0000; transition: transform 0.3s; }
+        .icon:hover { transform: rotate(10deg); }
+        .avatar { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #ff0000; margin: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .pie-chart { max-width: 400px; margin: 2rem auto; }
+        .vision-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 2rem; }
+        .vision-board img { width: 100%; height: 150px; object-fit: cover; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; border-radius: 8px; }
+        .vision-board img:hover { transform: scale(1.05); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
+        .lightbox img { max-width: 80%; max-height: 80%; }
+        .table { width: 90%; margin: 2rem auto; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .table th, .table td { padding: 1rem; border: 1px solid #000000; }
+        .table th { background: #000000; color: #ffffff; }
+        .quote { font-style: italic; font-size: 1.2rem; margin: 1rem; padding: 1rem; border-left: 5px solid #ff0000; background: #f9f9f9; }
+        .progress-bar { width: 100%; height: 20px; background: #e0e0e0; border-radius: 10px; overflow: hidden; margin: 1rem 0; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #ff0000, #ff6666); width: 70%; animation: fill 2s ease-in-out; }
+        @keyframes fill { from { width: 0; } to { width: 70%; } }
+        .typing { border-right: 2px solid #ff0000; animation: blink 1s infinite; white-space: nowrap; overflow: hidden; }
+        @keyframes blink { 0%, 50% { border-color: transparent; } 51%, 100% { border-color: #ff0000; } }
+        .fade-in { opacity: 0; animation: fadeIn 2s forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+        footer { background: #000000; color: #ffffff; text-align: center; padding: 2rem; }
+        .contact-form { max-width: 500px; margin: 2rem auto; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 0.5rem; margin: 0.5rem 0; border: 1px solid #000000; border-radius: 4px; }
+        .contact-form button { background: #ff0000; color: #ffffff; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+        .contact-form button:hover { background: #cc0000; }
+    </style>
+</head>
+<body onload="AOS.init();">
+    <header>
+        <nav>
+            <a href="#title">Home</a>
+            <a href="#profile">About Me</a>
+            <a href="#portfolio">Portfolio Mix</a>
+            <a href="#investments">Investment Types</a>
+            <a href="#vision">Vision Board</a>
+            <a href="#insights">Insights</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="title" class="fade-in parallax" style="background-image: url('https://via.placeholder.com/1920x1080?text=Finance+Background');">
+        <h1 class="typing">💼 Comprehensive Portfolio Management Project</h1>
+        <p><strong>Your Name:</strong> Alyssa Caliente</p>
+        <p><strong>Date:</strong> October 2025</p>
+        <!-- Replace with your photo URL: Upload to Imgur or similar, copy direct link -->
+        <img src="https://via.placeholder.com/150" alt="Alyssa Caliente" class="avatar">
+        <div>
+            <i class="fas fa-book icon"></i>
+            <i class="fas fa-calculator icon"></i>
+            <i class="fas fa-chart-line icon"></i>
+            <i class="fas fa-lightbulb icon"></i>
+        </div>
+    </section>
+
+    <section id="profile" data-aos="fade-up">
+        <h2>Investor Profile – “Meet the Investor”</h2>
+        <!-- Replace with your photo URL -->
+        <img src="https://via.placeholder.com/150" alt="Alyssa Caliente" class="avatar">
+        <p>I am <strong>Alyssa Caliente</strong>, a 21-year-old college student majoring in Finance. My long-term goal is to become financially independent and invest in both personal and business growth.</p>
+        <p>I have a <strong>moderate risk tolerance</strong> — I’m willing to take calculated risks while ensuring security for my future.</p>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <p>My <strong>financial personality</strong> is practical and disciplined, focusing on consistency and smart budgeting.</p>
+        <p>My <strong>investment objective</strong> is <span class="red-accent">long-term growth and financial protection</span>, balancing wealth creation with safety through diversified investments and life insurance.</p>
+        <div>
+            <i class="fas fa-coins icon"></i>
+            <i class="fas fa-chart-bar icon"></i>
+            <i class="fas fa-shield-alt icon"></i>
+        </div>
+    </section>
+
+    <section id="portfolio" data-aos="zoom-in">
+        <h2>“My Investment Portfolio Allocation”</h2>
+        <canvas id="portfolioChart" class="pie-chart"></canvas>
+        <p>This allocation offers both growth and protection. Stocks and mutual funds generate long-term returns, real estate adds stability, life insurance provides financial security, and savings ensure liquidity.</p>
+        <script>
+            const ctx = document.getElementById('portfolioChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Stocks', 'Mutual Funds', 'Real Estate', 'Life Insurance', 'Savings'],
+                    datasets: [{
+                        data: [35, 25, 15, 15, 10],
+                        backgroundColor: ['#0000ff', '#00ff00', '#ffff00', '#ff6600', '#800080'],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+            });
+        </script>
+    </section>
+
+    <section id="investments" data-aos="slide-right">
+        <h2>“Understanding My Investment Choices”</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Investment Type</th>
+                    <th>Importance & Role</th>
+                    <th>Icon</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Stocks</strong></td>
+                    <td>Allow long-term capital growth and potential dividends. Ideal for wealth accumulation.</td>
+                    <td><i class="fas fa-chart-line icon"></i></td>
+                </tr>
+                <tr>
+                    <td><strong>Mutual Funds</strong></td>
+                    <td>Professionally managed and diversified, reducing risk for moderate investors.</td>
+                    <td><i class="fas fa-coins icon"></i></td>
+                </tr>
+                <tr>
+                    <td><strong>Real Estate</strong></td>
+                    <td>Provides steady value appreciation and potential passive income.</td>
+                    <td><i class="fas fa-home icon"></i></td>
+                </tr>
+                <tr>
+                    <td><strong>Life Insurance</strong></td>
+                    <td>Protects my family financially in case of emergencies or loss. Acts as a long-term safety net.</td>
+                    <td><i class="fas fa-shield-alt icon"></i></td>
+                </tr>
+                <tr>
+                    <td><strong>Savings</strong></td>
+                    <td>Keeps funds accessible for short-term needs and emergencies.</td>
+                    <td><i class="fas fa-piggy-bank icon"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="vision" data-aos="flip-up">
+        <h2>“My Financial Vision & Reflection”</h2>
+        <blockquote class="quote">“Don’t save what is left after spending. Spend what is left after saving.” – Warren Buffett</blockquote>
+        <p>My vision is to achieve <span class="red-accent">financial freedom by age 30</span> while maintaining security through insurance and smart investing.</p>
+        <p>This project helped me realize that <strong>investing is not just about growing money — it’s also about protecting it</strong>.</p>
+        <div class="vision-board">
+            <!-- Replace each src with your image URLs (e.g., diploma photo, house image, etc.) -->
+            <img src="https://via.placeholder.com/200x150?text=Diploma" alt="Diploma" onclick="openLightbox(this.src)">
+            <img src="https://via.placeholder.com/200x150?text=House" alt="House" onclick="openLightbox(this.src)">
+            <img src="https://via.placeholder.com/200x150?text=Family" alt="Family" onclick="openLightbox(this.src)">
+            <img src="https://via.placeholder.com/200x150?text=Beach" alt="Beach" onclick="openLightbox(this.src)">
+            <img src="https://via.placeholder.com/200x150?text=Shield" alt="Shield" onclick="openLightbox(this.src)">
+        </div>
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <img id="lightboxImg" src="">
+        </div>
+    </section>
+
+    <section id="insights" data-aos="fade-in">
+        <h2>“Final Insights”</h2>
+        <p>Through this portfolio, I learned that success in investing comes from <span class="red-accent">balance</span> — between risk and security, and between growth and protection.</p>
+        <p>Life insurance completes my portfolio because it ensures peace of mind, knowing my loved ones are financially safe no matter what happens.</p>
+    </section>
+
+    <section id="contact" data-aos="zoom-in-up">
+        <h2>Contact Me</h2>
+        <p>Ready to discuss your own portfolio? Reach out!</p>
+        <form class="contact-form" action="#" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Alyssa Caliente. "Invest in yourself – it's the best investment you'll ever make."</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Lightbox for vision board
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
